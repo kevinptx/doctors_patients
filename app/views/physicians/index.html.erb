@@ -1,0 +1,11 @@
+<h1>Physicians</h1>
+<%= link_to 'Add Physician', new_physician_path%>
+<hr>
+<ul>
+  <% @physicians.each do |physician| %>
+    <li>
+      <%= link_to physician.name, physician_path(physician) %>
+        Number of Patients: <%= physician.patients.count %>
+    </li>
+  <% end %>
+</ul>
