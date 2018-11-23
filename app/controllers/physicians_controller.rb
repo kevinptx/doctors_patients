@@ -9,6 +9,10 @@ class PhysiciansController < ApplicationController
   end
 
   def new
+    @physcian = Physician.new
+  end
+
+  def create
     @physician = Physician.create(physician_params)
     if @physician.save
       redirect_to @physician

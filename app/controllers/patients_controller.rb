@@ -2,10 +2,11 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :destroy]
 
   def index
-    @patients = Patient.all
+    @patients = Patient.all.order("last_name")
   end
 
   def show
+    @appointments = @patient.appointments
   end
 
   def new
