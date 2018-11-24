@@ -1,11 +1,34 @@
-<h1>Physicians</h1>
-<%= link_to 'Add Physician', new_physician_path%>
+<span class="physician-show-header"><h1>University of Utah Physicians</h1><h3>Total Physicians in Our System: <%= @physicians.count %></h3></span>
 <hr>
-<ul>
+<br>
+<%= link_to 'Add Physician', new_physician_path, class: "ui button blue inverted" %>
+<br>
+<br>
+<hr>
+
+<table class="ui selectable celled striped table padded">
+  <thead>
+    <th class="center aligned">Physician Name</th>
+    <th class="center aligned">Specialty</th>
+    <th class="center aligned">Education</th>
+    <th class="center aligned">Phone</th>
+    <th class="center aligned">Appointments</th>
+    <th class="center aligned">Patients</th>
+
+    <th class="center aligned">Remove</th>
+  </thead>
+<tbody>
   <% @physicians.each do |physician| %>
-    <li>
-      <%= link_to physician.name, physician_path(physician) %>
-        Number of Patients: <%= physician.patients.count %>
-    </li>
+    <tr>
+      <td><%= link_to physician.name, physician_appointments_path(physician), class: "ui basic button"%></td>      
+      <td><%= physician.specialty %></td>
+      <td><%= physician.education %></td>
+      <td><%= physician.phone %></td>
+      <td><%= physician.appointments.count %></td>
+      <td><%= physician.patients.count %></td>
+      <td><%= button_to 'Remove', physician_path(@physician), method: :delete, class: "ui button red inverted"	%></td>
+    </tr>
   <% end %>
-</ul>
+</tbody>
+
+</table>

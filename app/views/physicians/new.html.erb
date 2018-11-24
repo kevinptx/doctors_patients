@@ -1,2 +1,27 @@
-<h1>Physicians#new</h1>
-<p>Find me in app/views/physicians/new.html.erb</p>
+<h1>Add Physician</h1>
+<%= form_with model: @physician, local: true, class: "ui form" do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, placeholder: "Physican Name" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :specialty %>
+    <%= f.select :specialty, ["Allergy & Immunology", "Anesthesiology", "Cardiology", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology", "Family Medicine", "Gastroenterology", "Geriatrics", "Hematology", "Immunology", "Infectious Disease", "Internal Medicine", "Medical Genetics", "Neurology", "Nuclear Medicine", "Obstetrics and Gynecology", "Opthamology", "Otorhinolaryngology", "Orthopedic Surgery", "Pain Medicine", "Pathology", "Pediatrics", "Physical Medicine & Rehabilation", "Plastic Surgery", "Preventice Medicine", "Psychiatry", "Radiation Oncology", "Rheumatology", "Surgery", "Urology"]%>
+  </div>
+
+  <div class="field">
+    <%= f.label :education %>
+    <%= f.text_field :education, required: true, placeholder: "Education" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, required: true, placeholder: "Phone" %>
+  </div>
+
+  <%= f.submit nil, class: "ui green button inverted"%>
+<% end %>
+
+
+
