@@ -19,7 +19,7 @@
         <td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button" %></td>
         <td><%= appt.patient.age%></td>
         <td><%= appt.patient.dob%></td>
-        <td><%= appt.patient.DateTime.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= appt.patient.time.strftime("%d/%m/%Y %H:%M") %></td>
         <td><%= button_to 'Cancel', physician_appointment_path(appt.physican_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
       </tr>
       <% end %>

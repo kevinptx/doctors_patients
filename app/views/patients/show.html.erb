@@ -1,2 +1,79 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h2><%= @patient.full_name%></h2>
+<h3 class="ui center aligned blue header">Patient Details</h3>
+<table class="ui definition table user-info selectable">
+<tr>
+    <td>First Name:</td>
+    <td><%= @patient.first_name %></td>
+</tr>
+<tr>
+    <td>Last Name:</td>
+    <td><%= @patient.last_name %></td>
+</tr>
+<tr>
+    <td>Age:</td>
+    <td><%= @patient.age %></td>
+</tr>
+<tr>
+    <td>Date of Birth:</td>
+    <td><%= @patient.dob.strftime('%m / %d / %Y') %></td>
+</tr>
+<tr>
+    <td>Sex:</td>
+    <td><%= @patient.sex %></td>
+</tr>
+<tr>
+    <td>Phone:</td>
+    <td><%= @patient.phone %></td>
+</tr>
+<tr>
+    <td>Street:</td>
+    <td><%= @patient.street %></td>
+</tr>
+<tr>
+    <td>City:</td>
+    <td><%= @patient.city %></td>
+</tr>
+<tr>
+    <td>State:</td>
+    <td><%= @patient.state %></td>
+</tr>
+<tr>
+    <td>Zip:</td>
+    <td><%= @patient.zip %></td>
+</tr>
+<tr>
+    <td>Preffered Language:</td>
+    <td><%= @patient.language %></td>
+</tr>
+<tr>
+    <td>Remove Patient:</td>
+    <td><%= button_to 'Delete', patient_path(@patient), method: :delete, class:"ui button red inverted" %></td>
+</tr>
+</table>
+<br />
+<br />
+
+<h2 class="ui center aligned blue header"><%= @patient.full_name%> <%= @patient.last_name[-1] == 's' ? "'  Scheduled Appointments" : "\'s Scheduled Appointments"%></h2>
+
+    <table class="ui table striped selectable">
+        <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Specialty</th>
+                <th>Doctor Phone</th>
+                <th>Date & Time</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @appointments.each_with_index do |appt,i| %>
+                <tr>
+                    <td><%= link_to appt.doctor.name, doctor_appointments_path(appt.doctor),class:"ui button basic" %></td>
+                    <td><%= appt.doctor.specialty %></td>
+                    <td><%= appt.doctor.phone %></td>
+                    <td><%= appt.time.strftime("%d/%m/%Y %H:%M") %></td>
+                    <td><%= button_to 'Cancel', doctor_appointment_path(appt.doctor_id, appt.id), method: :delete, class: "ui button red inverted" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
