@@ -1,5 +1,6 @@
-<h1><%= @physican.name %>, M.D.'s Appointments</h1>
-<%= link_to 'Add Appointment', new_physician_appointment_path(@physican), class:"ui button blue inverted" %>
+<span class="physician-show-header"><h1><%= @doctor.name %> Appointments</h1><h3>Specialty: <%= @doctor.specialty %></h3></span>
+
+<%= link_to 'Add Appointment', new_physician_appointment_path(@physican), class: "ui button blue inverted" %>
 <br>
 <br>
 <hr />

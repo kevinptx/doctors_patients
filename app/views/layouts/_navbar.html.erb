@@ -1,6 +1,15 @@
-<div class="ui menu">
-<%= link_to 'Physicians', physicians_path, class: "item" %>
-<%= link_to 'Add Physician', new_physician_path, class: "item"  %>
-<%= link_to 'Patients', patients_path, class: "item" %>
-<%= link_to 'Add Patient', new_patient_path, class: "item" %>
-</div>
+<nav>
+  <div class="ui inverted orange four item menu">
+    <%= link_to 'Physicians', physicians_path, class: "item" %>
+    <%= link_to 'Add Physician', new_physician_path, class: "item"  %>
+    <%= link_to 'Patients', patients_path, class: "item" %>
+    <%= link_to 'Add Patient', new_patient_path, class: "item" %>
+  </div>
+
+  <% if user_signed_in? %>
+  <div class="user-login">
+    <%= "Welcome #{current_user.first_name}" %>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "logout" %>
+  </div>
+  <% end %>
+</nav>

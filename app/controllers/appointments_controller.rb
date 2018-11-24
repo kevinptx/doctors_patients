@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show]
   before_action :set_physician
+  before_action :set_patients, only: [:new, :create]
 
   def index
     @appointments = Appointment.all.order(:datetime)
@@ -31,8 +31,8 @@ class AppointmentsController < ApplicationController
 
   private
 
-  def set_appointment
-    @appointment = Appointment.find(params[:id])
+  def set_patients
+    @patients = (Patient.all.order("last_name") - @physician.patients)
   end
 
   def set_physician
