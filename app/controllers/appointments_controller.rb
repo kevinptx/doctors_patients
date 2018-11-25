@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :set_patients, only: [:new, :create]
 
   def index
-    @appointments = Appointment.all.order(:datetime)
+    @appointments = @doctor.appointments.order(:datetime)
   end
 
   def show
