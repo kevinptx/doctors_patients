@@ -1,6 +1,6 @@
-<span class="physician-show-header"><h1><%= @doctor.name %> Appointments</h1><h3>Specialty: <%= @doctor.specialty %></h3></span>
+<span class="physician-show-header"><h1><%= @physician.name %> Appointments</h1><h3>Specialty: <%= @physician.specialty %></h3></span>
 
-<%= link_to 'Add Appointment', new_physician_appointment_path(@physican), class: "ui button blue inverted" %>
+<%= link_to 'Add Appointment', new_physician_appointment_path(@physician), class: "ui button blue inverted" %>
 <br>
 <br>
 <hr />
@@ -21,7 +21,7 @@
         <td><%= appt.patient.age%></td>
         <td><%= appt.patient.dob%></td>
         <td><%= appt.patient.time.strftime("%d/%m/%Y %H:%M") %></td>
-        <td><%= button_to 'Cancel', physician_appointment_path(appt.physican_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
+        <td><%= button_to 'Cancel', physician_appointment_path(appt.physician_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
       </tr>
       <% end %>
   </tbody>

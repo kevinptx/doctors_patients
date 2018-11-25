@@ -9,30 +9,30 @@ class PhysiciansController < ApplicationController
   end
 
   def new
-    @physcian = Physician.new
+    @physician = Physician.new
   end
 
   def create
     @physician = Physician.create(physician_params)
     if @physician.save
-      redirect_to @physician
+      redirect_to physicians_path
     else
       render :new
     end
   end
 
   def destroy
-    @physican.destroy
-    redirect_to physicans_path
+    @physician.destroy
+    redirect_to physicians_path
   end
 
   private
 
   def set_physician
-    @physican = Physician.find(params[:id])
+    @physician = Physician.find(params[:id])
   end
 
   def physician_params
-    params.require(:physican).permit(:name)
+    params.require(:physician).permit(:name, :specialty, :education, :phone)
   end
 end
